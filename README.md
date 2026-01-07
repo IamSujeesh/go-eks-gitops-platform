@@ -60,6 +60,7 @@ Command to run the Docker container:
 docker run -p 8080:8080 <your-docker-username>/go-web-app:v1
 ```
 
+![DockerContainer](images/Docker-container.png)
 
 Command to push the Docker container to Docker Hub:
 
@@ -67,7 +68,7 @@ Command to push the Docker container to Docker Hub:
 docker push <your-docker-username>/go-web-app:v1
 ```
 
-
+![DockerHub](images/DockerHub.png)
 
 ## Infrastructure Provisioning using terraform - EKS
 
@@ -162,6 +163,8 @@ This shows the resources Terraform will create.
 terraform apply
 ```
 
+![Terraform](images/Terraform-apply.png)
+
 Terraform will provision:
 
 - VPC & subnets
@@ -169,6 +172,8 @@ Terraform will provision:
 - EKS Cluster
 - Worker Node Group
 - IAM roles & security resources
+
+![Terraform](images/EKS.png)
 
 ## Configure kubectl Access to the Cluster
 
@@ -274,6 +279,7 @@ kubernetes   ClusterIP      172.20.0.1     <none>                               
 
 - Now the service is accessible via LoadBalancer:
 
+![App](images/App-access-from-svc.png)
 
 ## Why Ingress Controller is Required
 
@@ -724,6 +730,8 @@ Repository → Contents → Read & Write
 
 Purpose: Used to auto-commit updated Helm chart image tags back to your repository during CI.
 
+![CI](images/Secrets.png)
+
 Push changes from local:
 
 ```bash
@@ -736,6 +744,8 @@ git push -u origin main
 
 ``` 
 You can monitor pipeline execution in the GitHub Actions tab.
+
+![CI](images/GitHub-Actions-CI.png)
 
 ## CD Implementation (Argo CD)
 
@@ -803,6 +813,8 @@ Login credentials:
 - Username: admin
 - Password: (decoded output above)
 
+![CD](images/ArgoCD-1.png)
+
 ## 🎯 Create Argo CD Application
 
 In the UI:
@@ -823,6 +835,8 @@ Argo CD will:
 - Continuously monitor the Helm chart
 - Detect image tag updates from CI
 - Automatically sync and deploy the latest version
+
+![CD](images/ArgoCD-2.png)
 
 ```text
 $ kubectl get deploy
