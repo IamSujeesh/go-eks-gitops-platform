@@ -17,7 +17,7 @@ The application will start on port 8080. You can access it by navigating to `htt
 
 ![Website](static/images/golang-website.png)
 
-# DevOps ptactices on the go web application
+# DevOps practices on the go web application
 
 The main goal of this project is to implement DevOps practices in the Go web application. The project is a simple website written in Golang. It uses the `net/http` package to serve HTTP requests.
 
