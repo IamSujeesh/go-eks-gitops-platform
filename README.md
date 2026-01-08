@@ -513,7 +513,7 @@ replicaset.apps/go-web-app-c876cff96   1         1         1       91s
 Uninstall release if needed:
 
 ```bash
-helm uninstall go webapp go-web-app-chart
+helm uninstall go-webapp go-web-app-chart
 ```
 
 ## Summary (What This Workflow Demonstrates)
@@ -723,7 +723,8 @@ You can monitor pipeline execution in the GitHub Actions tab.
 
 ## CD Implementation (Argo CD)
 
-Every time ci pipeline runs ,Argo CD has to identifies the change and push it to k8s cluster
+Every time the CI pipeline runs, Argo CD identifies the change and automatically syncs it to the Kubernetes cluster
+
 
 - Install Argo CD
 
