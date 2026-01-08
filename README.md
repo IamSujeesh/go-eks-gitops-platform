@@ -833,7 +833,7 @@ To avoid unnecessary AWS costs, clean up resources after testing:
 helm uninstall go-web-app
 kubectl delete namespace argocd
 ```
-## Destroy AWS Infrastructure
+### Destroy AWS Infrastructure
 ```bash
 terraform destroy
 ```
