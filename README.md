@@ -1,39 +1,24 @@
-# Go Web Application
+## 🚀 Project Overview
 
-This is a simple website written in Golang. It uses the `net/http` package to serve HTTP requests.
+This project demonstrates a complete end-to-end DevOps workflow for a Golang web application using modern cloud-native tools.
 
-## Running the website locally first to understand the project
+The application is containerized using Docker, deployed on AWS EKS using Kubernetes, templated with Helm, and delivered through a fully automated CI/CD pipeline using GitHub Actions and Argo CD (GitOps).
 
-To run the website, execute the following command:
+## 🧰 Tech Stack
 
-```bash
-go build -o main .
-./main
-```
+- Language: Go
+- Containerization: Docker (Multi-stage build)
+- Cloud: AWS
+- IaC: Terraform
+- Orchestration: Kubernetes (EKS)
+- Ingress: NGINX Ingress Controller
+- Packaging: Helm
+- CI: GitHub Actions
+- CD: Argo CD (GitOps)
 
-The application will start on port 8080. You can access it by navigating to `http://localhost:8080/about` in your web browser.
+## 🏗 Architecture
 
-## Looks like this
-
-![Website](static/images/golang-website.png)
-
-# DevOps practices on the go web application
-
-The main goal of this project is to implement DevOps practices in the Go web application. The project is a simple website written in Golang. It uses the `net/http` package to serve HTTP requests.
-
-DevOps practices include the following:
-
-
-- Dockerfile (Multi-stage build)
-- Containerization with Docker
-- Infrastructure provisioning using Terraform - EKS
-- Kubernetes Deployment (Service, Ingress, NGINX Ingress Controller)
-- Helm chart conversion for application deployment
-- Continuous Integration (CI) using GitHub Actions
-- Continuous Deployment (CD) using ArgoCD (GitOps)
-
-## Summary Diagram
-![image](images/Architecture-Diagram.png)
+![Architecture Diagram](images/Architecture-Diagram.png)
 
 
 # Dockerfile (Multi-stage build)
@@ -69,6 +54,7 @@ docker push <your-docker-username>/go-web-app:v1
 ```
 
 ![DockerHub](images/DockerHub.png)
+
 
 ## Infrastructure Provisioning using terraform - EKS
 
@@ -126,7 +112,6 @@ Terraform v1.14.3
 on windows_amd64
 ```
 
-
 ## Project Setup
 
 Clone the Repository
@@ -159,21 +144,25 @@ This shows the resources Terraform will create.
 
 ## Create the EKS Cluster
 
-```bash
-terraform apply
-```
+<details> <summary>Terraform Apply – Infrastructure Provisioning Output</summary>
 
-![Terraform](images/Terraform-apply-result.png)
+</details>
 
-Terraform will provision:
+Terraform provisions the following AWS resources:
 
-- VPC & subnets
-- Internet Gateway / NAT
-- EKS Cluster
-- Worker Node Group
-- IAM roles & security resources
+VPC and subnets
 
-![Terraform](images/EKS.png)
+Internet Gateway and NAT Gateway
+
+Amazon EKS Cluster
+
+Managed Worker Node Group
+
+IAM roles and security resources
+
+<details> <summary>EKS Cluster Details</summary>
+
+</details> ```
 
 ## Configure kubectl Access to the Cluster
 
@@ -209,18 +198,6 @@ ip-10-0-2-201.eu-west-1.compute.internal   Ready    <none>   4m55s   v1.34.2-eks
 
 If you see worker nodes listed — kubectl is successfully configured.
 
-To remove all created resources:
-
-```bash
-terraform destroy
-```
-
-Notes & Best Practices
-
-- EKS costs money — destroy the cluster after testing
-- Always use IAM roles instead of root credentials
-- Use separate workspaces for dev / stage / prod environments
- 
 Once the EKS cluster is created and kubectl access is configured, Deploying the Application to EKS (Manual Deployment Before CI/CD)
 
 # Kubernetes Deployment (Service, Ingress, NGINX Ingress Controller)
@@ -749,13 +726,14 @@ You can monitor pipeline execution in the GitHub Actions tab.
 
 ![CI](images/GitHub-Actions-CI.png)
 
+
 ## CD Implementation (Argo CD)
 
-everytime ci pipeline runs ,argocd has to identify the change and push it to k8s cluster
+every time ci pipeline runs ,ArgoCD has to identify the change and push it to k8s cluster
 
 # Install Argo CD
 
-## Install Argo CD using manifests
+Install Argo CD using manifests
 
 ```bash
 kubectl create namespace argocd
@@ -827,7 +805,7 @@ In the UI:
 - Sync Policy: Automatic + Enable auto-sync Self-Heal
 - Repository URL: (Git repo URL)
 - Path: helm/go-web-app-chart
-- Destination- select exisiting
+- Destination- select existing
 - Namespace: default
 - Select values.yaml
 - Click Create
@@ -862,3 +840,12 @@ go-web-app   nginx   go-web-app.52.211.105.252.nip.io   a82ca37a823da403fabac42f
 EAD+sk508@IN-5CD4377RNY MINGW64 ~/Downloads/go-eks-gitops-devops-project (main)
 $
 ```
+
+
+## 📌 Key Learnings
+
+- Implemented GitOps-based CD using Argo CD with automatic self-healing
+- Designed production-style Kubernetes networking using Ingress and NLB
+- Automated Docker image build and Helm value updates via GitHub Actions
+- Used Terraform to provision scalable EKS infrastructure
+- Understood real-world CI/CD separation and responsibility boundaries
