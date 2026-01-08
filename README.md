@@ -519,7 +519,7 @@ helm uninstall go webapp go-web-app-chart
 ## Summary (What This Workflow Demonstrates)
 
 - Manual deployment using kubectl
-- LoadBalanacer testing before ingress
+- LoadBalancer testing before ingress
 - The NGINX ingress controller runs inside the cluster-It watches ingress resources
 - For each ingress rule, it creates a Load Balancer on AWS
 - Map Load Balancer IP to a Temporary Hostname (nip.io)
@@ -723,7 +723,7 @@ You can monitor pipeline execution in the GitHub Actions tab.
 
 ## CD Implementation (Argo CD)
 
-Every time ci pipeline runs ,Argo CD has to identif the change and push it to k8s cluster
+Every time ci pipeline runs ,Argo CD has to identifies the change and push it to k8s cluster
 
 - Install Argo CD
 
