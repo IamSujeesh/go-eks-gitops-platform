@@ -144,25 +144,21 @@ This shows the resources Terraform will create.
 
 ## Create the EKS Cluster
 
-<details> <summary>Terraform Apply – Infrastructure Provisioning Output</summary>
+```bash
+terraform apply
+```
 
-</details>
+![Terraform](images/Terraform-apply-result.png)
 
-Terraform provisions the following AWS resources:
+Terraform will provision:
 
-VPC and subnets
+- VPC & subnets
+- Internet Gateway / NAT
+- EKS Cluster
+- Worker Node Group
+- IAM roles & security resources
 
-Internet Gateway and NAT Gateway
-
-Amazon EKS Cluster
-
-Managed Worker Node Group
-
-IAM roles and security resources
-
-<details> <summary>EKS Cluster Details</summary>
-
-</details> ```
+![Terraform](images/EKS.png)
 
 ## Configure kubectl Access to the Cluster
 
